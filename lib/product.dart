@@ -28,6 +28,7 @@ class Product {
     return Product(
       map['id'] as int,
       map['title'] as String,
+      // khi lấy về sẽ là kiểu int không thể qua double đc
       map['price'] == null ? 0.0 : map['price'].toDouble(),
       map['category'] as String,
       map['description'] as String,

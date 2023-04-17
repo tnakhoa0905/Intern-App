@@ -21,9 +21,20 @@ Future<List<Product>> fetchProducts() async {
   }
 }
 
+void updateProduct(Product product) async {
+  final response = await http.put(
+      Uri.parse("https://fakestoreapi.com/products/asssssss"),
+      body: jsonEncode(product.toMap()));
+  if (response.statusCode == 200) {
+    print('update thành công');
+  } else {
+    throw Exception('sai rồi');
+  }
+}
+
 void deleteProduct(int id) async {
   final response = await http.delete(
-    Uri.parse('https://fakestoreapi.com/products/$id'),
+    Uri.parse('https://fakestoreapi.com/products/-111'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -270,7 +281,7 @@ class ProductBox extends StatelessWidget {
                             RatingBox(),
                             ElevatedButton(
                                 onPressed: () {
-                                  deleteProduct(item.id);
+                                  updateProduct(item);
                                 },
                                 child: Text('Delete'))
                           ],
